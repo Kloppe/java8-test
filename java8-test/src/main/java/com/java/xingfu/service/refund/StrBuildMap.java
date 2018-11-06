@@ -1,4 +1,4 @@
-package com.java.xingfu.refund;
+package com.java.xingfu.service.refund;
 
 import com.google.common.collect.Maps;
 import java.util.Arrays;

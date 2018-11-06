@@ -1,4 +1,4 @@
-package com.java.xingfu;
+package com.java.xingfu.service.lambda;
 
 import com.google.common.collect.ImmutableList;
 import com.java.xingfu.bo.AA;
