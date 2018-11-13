@@ -109,6 +109,12 @@ public abstract class AbstractBeanFactory extends DefaultSingleBeanFactory imple
         }
     }
 
+
+
+    public void setMergedBeanDefinition(String beanName, DefaultBeanDefinition beanDefinition) {
+        mergedBeanDefinitions.put(beanName, beanDefinition);
+    }
+
     private DefaultBeanDefinition getMergedLocalBeanDefinition(String beanName) {
         return this.mergedBeanDefinitions.get(beanName);
     }

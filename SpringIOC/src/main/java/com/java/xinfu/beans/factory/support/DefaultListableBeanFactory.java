@@ -53,7 +53,9 @@ public class DefaultListableBeanFactory extends AbstractBeanFactory implements B
         beanDefiniton = this.beanDefinitonMap.get(beanName);
         //若是DefaultBeanDefinition则同时存到AbstractBeanFactory的mergedBeanDefinition中去
         if(beanDefiniton instanceof DefaultBeanDefinition){
-            this.set
+            this.setMergedBeanDefinition(beanName,(DefaultBeanDefinition)beanDefiniton);
         }
     }
+
+
 }
