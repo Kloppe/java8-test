@@ -2,7 +2,7 @@ package com.java.xinfu.beans.factory.support;
 
 import com.java.xinfu.beans.MutablePropertyValues;
 import com.java.xinfu.beans.PropertyValues;
-import com.java.xinfu.beans.factory.config.BeanDefiniton;
+import com.java.xinfu.beans.factory.config.BeanDefinition;
 import com.java.xinfu.core.io.Resource;
 import java.util.Arrays;
 import java.util.Objects;
@@ -12,9 +12,9 @@ import java.util.Objects;
  * @date 2018/11/11
  * @desc
  */
-public class DefaultBeanDefinition implements BeanDefiniton {
+public class DefaultBeanDefinition implements BeanDefinition {
     //bean的作用域
-    private String scope = BeanDefiniton.SCOPE_SINGLETON;
+    private String scope = BeanDefinition.SCOPE_SINGLETON;
     //该bean的class对象
     private Object beanClass;
     //所依赖的bean的类名
@@ -33,7 +33,7 @@ public class DefaultBeanDefinition implements BeanDefiniton {
     private DefaultBeanDefinition(DefaultBeanDefinition original){
         this.setScope(original.getScope());
         this.setBeanClass((Class<?>) original.beanClass);
-        this.setDependsOn(original.getDependOn());
+        this.setDependsOn(original.getDependsOn());
         this.setDescription(original.description);
         this.setResoure(original.resoure);
         this.setPropertyValues(new MutablePropertyValues(original.getPropertyValues()));
@@ -78,7 +78,7 @@ public class DefaultBeanDefinition implements BeanDefiniton {
 
 
     @Override
-    public String[] getDependOn() {
+    public String[] getDependsOn() {
         return dependOn;
     }
 
@@ -105,7 +105,7 @@ public class DefaultBeanDefinition implements BeanDefiniton {
 
     @Override
     public boolean isSingleton() {
-        return this.scope.endsWith(BeanDefiniton.SCOPE_SINGLETON);
+        return this.scope.endsWith(BeanDefinition.SCOPE_SINGLETON);
     }
 
     @Override

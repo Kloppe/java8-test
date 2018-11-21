@@ -1,7 +1,7 @@
 package com.java.xinfu.beans.factory.support;
 
-import com.java.xinfu.beans.factory.config.BeanDefinitionRegister;
-import com.java.xinfu.beans.factory.config.BeanDefiniton;
+import com.java.xinfu.beans.factory.config.BeanDefinitionRegistry;
+import com.java.xinfu.beans.factory.config.BeanDefinition;
 import com.java.xinfu.exception.BeanDefinitionStoreException;
 import com.java.xinfu.util.Assert;
 import java.io.Serializable;
@@ -15,9 +15,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * @description
  * @date 2018/11/11
  */
-public class DefaultListableBeanFactory extends AbstractBeanFactory implements BeanDefinitionRegister, Serializable {
+public class DefaultListableBeanFactory extends AbstractBeanFactory implements BeanDefinitionRegistry, Serializable {
     //用户缓存所有的beanDefinition
-    private final Map<String, BeanDefiniton> beanDefinitonMap = new ConcurrentHashMap<>(256);
+    private final Map<String, BeanDefinition> beanDefinitonMap = new ConcurrentHashMap<>(256);
     //用户缓存所有的beanDefinition对象的name
     private volatile List<String> beanDefinitionNames = new ArrayList<>(256);
 
@@ -29,10 +29,10 @@ public class DefaultListableBeanFactory extends AbstractBeanFactory implements B
         return  this.beanDefinitonMap.containsKey(beanName);
     }
 
-    public void registerBeanDefinition(String beanName, BeanDefiniton beanDefiniton)throws BeanDefinitionStoreException{
+    public void registerBeanDefinition(String beanName, BeanDefinition beanDefiniton)throws BeanDefinitionStoreException{
         Assert.hasText(beanName,"Bean name must not be null");
         Assert.notNull(beanDefiniton,"BeanDefinition must not be null");
-        BeanDefiniton oldBeanDefinition = this.beanDefinitonMap.get(beanName);
+        BeanDefinition oldBeanDefinition = this.beanDefinitonMap.get(beanName);
         if(oldBeanDefinition != null){
             //验证 beanDefinition 与 oldBeanDefinition是否相等
             if(!beanDefiniton.equals(oldBeanDefinition)){
@@ -56,6 +56,8 @@ public class DefaultListableBeanFactory extends AbstractBeanFactory implements B
             this.setMergedBeanDefinition(beanName,(DefaultBeanDefinition)beanDefiniton);
         }
     }
+
+
 
 
 }

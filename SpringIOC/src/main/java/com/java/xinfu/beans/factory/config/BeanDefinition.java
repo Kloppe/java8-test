@@ -10,14 +10,14 @@ import com.java.xinfu.beans.PropertyValues;
  *  需要考虑bean创建顺利的问题：被依赖的bean需要先创建.
  *  spring实现：在beanDefinition中有个String[] getDependsOn()的方法，可以返回依赖bean的name
  */
-public interface BeanDefiniton {
+public interface BeanDefinition {
     //单例
     String SCOPE_SINGLETON = "singleton";
     //多例
     String SCOPE_PROTOTYPE = "protorype";
 
     //获得所有以来的bean的类名数组
-    String[] getDependOn();
+    String[] getDependsOn();
 
     //获得该bean的className
     String getBeanClassName();

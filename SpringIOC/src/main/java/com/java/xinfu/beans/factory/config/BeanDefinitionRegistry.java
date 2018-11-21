@@ -7,16 +7,16 @@ import com.java.xinfu.exception.BeanDefinitionStoreException;
  * @description
  * @date 2018/11/11
  */
-public interface BeanDefinitionRegister {
+public interface BeanDefinitionRegistry {
 
     //BeanDefinition的注册
-    void registerBeanDefiniton(String beanName, BeanDefiniton beanDefiniton)throws BeanDefinitionStoreException;
+    void registerBeanDefiniton(String beanName, BeanDefinition beanDefiniton)throws BeanDefinitionStoreException;
 
     //撤销BeanDefinition的注册
     void removeBeanDefinition(String beanName) throws Exception;
 
     //根据beanName获得BeanDefinition
-    BeanDefiniton getBeanDefiniton(String beanName) throws Exception;
+    BeanDefinition getBeanDefiniton(String beanName) throws Exception;
 
     String[] getBeanDefinitonNames();
 
